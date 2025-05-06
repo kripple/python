@@ -49,5 +49,7 @@ python manage.py runserver
 # Create a new app `polls`
 python manage.py startapp polls
 
-# View at http://127.0.0.1:8000/polls/
+# Create the tables in the database
+# The migrate command will only run migrations for apps in src/settings.py INSTALLED_APPS
+python manage.py migrate
 ```
