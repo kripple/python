@@ -52,4 +52,7 @@ python manage.py startapp polls
 # Create the tables in the database
 # The migrate command will only run migrations for apps in src/settings.py INSTALLED_APPS
 python manage.py migrate
+
+# Create migrations for polls app
+python manage.py makemigrations polls
 ```
