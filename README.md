@@ -30,6 +30,7 @@ python -m django --version # 5.2
 django-admin startproject src .
 
 # Run the dev server
+# The development server automatically reloads Python code for each request as needed. You don’t need to restart the server for code changes to take effect. However, some actions like adding files don’t trigger a restart, so you’ll have to restart the server in these cases.
 python manage.py runserver
 
 # To exit a virtual environment, use the deactivate command:
@@ -44,4 +45,7 @@ source .venv/bin/activate
 
 # Run the dev server
 python manage.py runserver
+
+# Create a new app `polls`
+python manage.py startapp polls
 ```
