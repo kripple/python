@@ -185,9 +185,55 @@ True
 >>> c.delete()
 ```
 
-### Alias Candidates
+## Alias Candidates
 
 ```bash
 source $HOME/.local/bin/env && source .venv/bin/activate
 python manage.py shell
 ```
+
+## Admin
+
+The Django admin site is activated by default.
+
+`django.contrib.auth` is the authentication framework shipped by Django. Groups and Users exist by default.
+
+```bash
+# Create an admin user
+python manage.py createsuperuser
+
+# Start the development server - http://127.0.0.1:8000/admin/
+python manage.py runserver
+```
+
+To tell the admin that Question objects have an admin interface, add this to the polls/admin.py file:
+
+```python
+from django.contrib import admin
+
+from .models import Question
+
+admin.site.register(Question)
+```
+
+Things to note here:
+
+- The form is automatically generated from the Question model.
+
+- The different model field types (DateTimeField, CharField) correspond to the appropriate HTML input widget. Each type of field knows how to display itself in the Django admin.
+
+- Each DateTimeField gets free JavaScript shortcuts. Dates get a “Today” shortcut and calendar popup, and times get a “Now” shortcut and a convenient popup that lists commonly entered times.
+
+The bottom part of the page gives you a couple of options:
+
+- Save – Saves changes and returns to the change-list page for this type of object.
+
+- Save and continue editing – Saves changes and reloads the admin page for this object.
+
+- Save and add another – Saves changes and loads a new, blank form for this type of object.
+
+- Delete – Displays a delete confirmation page.
+
+If the value of “Date published” doesn’t match the time when you created the question in Tutorial 1, it probably means you forgot to set the correct value for the TIME_ZONE setting. Change it, reload the page and check that the correct value appears.
+
+Change the “Date published” by clicking the “Today” and “Now” shortcuts. Then click “Save and continue editing.” Then click “History” in the upper right. You’ll see a page listing all changes made to this object via the Django admin, with the timestamp and username of the person who made the change:
